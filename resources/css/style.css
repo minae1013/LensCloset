@@ -158,13 +158,13 @@
     right: 0;
 }
 
-.writeImgBox {
+/* .writeImgBox {
     display: flex;
     flex-direction: column;
     padding: 100px 30px;
     border: 2px dashed #333;
     border-radius: 25px;
-}
+} */
 
 .writeImgInput {
     display: inline-block;

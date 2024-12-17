@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Enums\RepeatEnum;
+use App\Enums\LifespanEnum;
 
 return new class extends Migration
 {
@@ -17,14 +19,14 @@ return new class extends Migration
             $table->foreignId('category_id')->constrained()->onDelete('cascade');
             $table->string('brand');
             $table->string('color');
-            $table->float('lens_diameter');
-            $table->float('colored_diameter');
-            $table->string('lifespan');
+            $table->decimal('lens_diameter', 3, 1);
+            $table->decimal('colored_diameter', 3, 1);
+            $table->enum('lifespan', [LifespanEnum::ONE_DAY->value, LifespanEnum::TWO_WEEKS->value, LifespanEnum::ONE_MONTH->value])->default(LifespanEnum::ONE_DAY->value);
             $table->integer('price');
             $table->string('image_path');
             $table->integer('rating');
             $table->text('comment');
-            $table->string('repeat');
+            $table->enum('repeat', [RepeatEnum::YES->value, RepeatEnum::NO->value])->default(RepeatEnum::NO->value);
             $table->timestamps();
         });
     }

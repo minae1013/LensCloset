@@ -27,12 +27,10 @@ class LensFactory extends Factory
             'color' => $this->faker->word(),
             'lens_diameter' => $this->faker->randomFloat(1, 14, 15),
             'colored_diameter' => $this->faker->randomFloat(1, 11, 15),
-            'lifespan' => $this->faker->randomElement(['1day', '2week', '1month']),
             'price' => $this->faker->numberBetween(1000, 5000),
             'image_path' => 'https://picsum.photos/200/300',
             'rating' => $this->faker->numberBetween(1, 5),
             'comment' => $this->faker->realText(200),
-            'repeat' => $this->faker->randomElement(['あり', 'なし']),
         ];
     }
 }

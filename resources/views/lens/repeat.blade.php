@@ -2,7 +2,7 @@
     <section class="container mx-auto">
         <div class="mt-5">
             <h2 class="text-2xl font-semibold text-center">
-                Favorite List
+                Repeat List
             </h2>
         </div>
         @include('layouts.postbox')
