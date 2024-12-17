@@ -5,5 +5,6 @@
                 Favorite List
             </h2>
         </div>
+        @include('layouts.postbox')
     </section>
 </x-app-layout>

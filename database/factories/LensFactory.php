@@ -24,7 +24,7 @@ class LensFactory extends Factory
             'user_id' => $users[array_rand($users)],
             'category_id' => $categories[array_rand($categories)],
             'brand' => $this->faker->realText(10),
-            'color' => $this->faker->realText(100),
+            'color' => $this->faker->word(),
             'lens_diameter' => $this->faker->randomFloat(1, 14, 15),
             'colored_diameter' => $this->faker->randomFloat(1, 11, 15),
             'lifespan' => $this->faker->randomElement(['1day', '2week', '1month']),
