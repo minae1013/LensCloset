@@ -76,7 +76,13 @@ class LensController extends Controller
      */
     public function show(string $id)
     {
-        return view('lens.detail');
+        $lens = Lens::find($id);
+
+        if(is_null($lens)){
+            return view('lens.detail', ['error' => 'データがありません']);
+        }
+
+        return view('lens.detail', compact('lens'));
     }
 
     /**
@@ -84,7 +90,12 @@ class LensController extends Controller
      */
     public function edit(string $id)
     {
-        return view('lens.edit');
+        $lens = Lens::findOrFail($id);
+
+        $categories = Category::orderBy('created_at', 'desc')
+        ->get();
+
+        return view('lens.edit', compact('lens', 'categories'));
     }
 
     /**
@@ -92,7 +103,8 @@ class LensController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
+        return redirect()->route('mylens')->with('success', '投稿が更新されました!');
     }
 
     /**
@@ -100,6 +112,8 @@ class LensController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $lens = Lens::findOrFail($id);
+        $lens->delete();
+        return redirect()->route('mylens')->with('success', '投稿が削除されました!');
     }
 }
