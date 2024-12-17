@@ -49,7 +49,26 @@ class LensController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $image = $request->file('image_path');
+        $imageName = time() . '-' . $image->getClientOriginalName();
+        $image->move(public_path('img'),  $imageName);
+        $imageUrl = 'img/' . $imageName;
+
+        $lens = new lens;
+        $lens->user_id = auth()->id();
+        $lens->brand = $request->brand;
+        $lens->color = $request->color;
+        $lens->lens_diameter = $request->lens_diameter;
+        $lens->colored_diameter = $request->colored_diameter;
+        $lens->lifespan = $request->lifespan;
+        $lens->price = $request->price;
+        $lens->rating = $request->rating;
+        $lens->repeat = $request->repeat;
+        $lens->category_id = $request->category_id;
+        $lens->comment = $request->comment;
+        $lens->image_path = $imageUrl;
+        $lens->save();
+        return redirect()->route('mylens');
     }
 
     /**
