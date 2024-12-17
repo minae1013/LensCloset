@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Lens;
+use App\Models\Category;
 
 class LensController extends Controller
 {
@@ -14,9 +17,21 @@ class LensController extends Controller
         return view('home');
     }
 
+    // Myコンタクト一覧の表示
     public function mylens()
     {
-        return view('mylens');
+        $userId = Auth::id();
+
+        if(Auth::check()){
+            $lenses = Lens::with('category')
+                ->where('user_id', $userId)
+                ->orderBy('updated_at', 'desc')
+                ->paginate(8);
+            return view('mylens', compact('lenses'));
+        } else{
+            return redirect()->route('home');
+        }
+        
     }
 
     /**
@@ -24,7 +39,9 @@ class LensController extends Controller
      */
     public function create()
     {
-        return view('lens.create');
+        $categories = Category::orderBy('created_at', 'desc')
+        ->get();
+        return view('lens.create', compact('categories'));
     }
 
     /**
