@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="container mx-auto px-4 py-6">
-        <form method="post" action="{{ route('update') }}" enctype="multipart/form-data" class="space-y-6">
+        <form method="post" action="{{ route('update', $lens->id) }}" enctype="multipart/form-data" class="space-y-6">
             @csrf
             @method('PUT')
 
@@ -137,7 +137,7 @@
             {{-- 登録ボタン --}}
             <div class="flex justify-end">
                 <button type="submit" class="mt-2 px-6 py-3 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-300">
-                    登録
+                    更新
                 </button>
             </div>
         </form>

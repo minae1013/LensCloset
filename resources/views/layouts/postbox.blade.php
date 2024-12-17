@@ -1,9 +1,9 @@
 <div class="grid grid-cols-2 lg:grid-cols-3 gap-6 mt-8 px-7">
     @if($lenses->isEmpty())
-        <p>該当データがありません。</p>
+        <p class="mt-5">データがありません。</p>
     @else
         @foreach($lenses as $lens)
-            <a href="" class="postBox bg-gray-100 h-36 rounded-lg shadow-lg border flex overflow-hidden">
+            <a href="{{ route('detail', $lens->id) }}" class="postBox bg-gray-100 h-36 rounded-lg shadow-lg border flex overflow-hidden">
                 <div class="postImgItem h-36 w-1/3 pr-2">
                     <img src="{{ $lens->image_path }}" alt="{{ $lens->brand }}" class="w-full h-full object-cover">
                 </div>

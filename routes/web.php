@@ -17,7 +17,7 @@ Route::middleware('auth')->group(function () {
     Route::get('lens/create', [LensController::class, 'create'])->name('create');
     Route::post('lens/create', [LensController::class, 'store'])->name('store');
 
-    Route::put('lens/{id}', [LensController::class, 'detail'])->name('detail');
+    Route::get('lens/{id}', [LensController::class, 'show'])->name('detail');
 
     Route::get('lens/{id}/edit', [LensController::class, 'edit'])->name('edit');
     Route::put('lens/{id}', [LensController::class, 'update'])->name('update');
