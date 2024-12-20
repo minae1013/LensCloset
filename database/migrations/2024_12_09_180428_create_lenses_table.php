@@ -5,6 +5,7 @@ use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 use App\Enums\RepeatEnum;
 use App\Enums\LifespanEnum;
+use App\Enums\RatingEnum;
 
 return new class extends Migration
 {
@@ -24,7 +25,7 @@ return new class extends Migration
             $table->enum('lifespan', [LifespanEnum::ONE_DAY->value, LifespanEnum::TWO_WEEKS->value, LifespanEnum::ONE_MONTH->value])->default(LifespanEnum::ONE_DAY->value);
             $table->integer('price');
             $table->string('image_path');
-            $table->integer('rating');
+            $table->enum('rating', [RatingEnum::VERY_GOOD->value, RatingEnum::GOOD->value, RatingEnum::NEUTRAL->value, RatingEnum::BAD->value, RatingEnum::VERY_BAD->value])->default(RatingEnum::NEUTRAL->value);
             $table->text('comment');
             $table->enum('repeat', [RepeatEnum::YES->value, RepeatEnum::NO->value])->default(RepeatEnum::NO->value);
             $table->timestamps();
