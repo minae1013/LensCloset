@@ -14,6 +14,9 @@ class LensController extends Controller
      */
     public function home()
     {
+        if(Auth::check()){
+            return redirect()->route('mylens');
+        }
         return view('home');
     }
 
