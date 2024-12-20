@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PostRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Lens;
@@ -29,7 +30,7 @@ class LensController extends Controller
             $lenses = Lens::with('category')
                 ->where('user_id', $userId)
                 ->orderBy('updated_at', 'desc')
-                ->paginate(8);
+                ->paginate(6);
             return view('mylens', compact('lenses'));
         } else{
             return redirect()->route('home');
@@ -50,7 +51,7 @@ class LensController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PostRequest $request)
     {
         $image = $request->file('image_path');
         $imageName = time() . '-' . $image->getClientOriginalName();
@@ -104,7 +105,7 @@ class LensController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(PostRequest $request, string $id)
     {
         
         return redirect()->route('mylens')->with('success', '投稿が更新されました!');

@@ -5,7 +5,7 @@
             <!-- Logo -->
             <div class="shrink-0 flex items-center">
                 <a href="">
-                    <p class="text-2xl font-bold text-white">LENS CLOSET</pc>
+                    <p class="text-2xl font-bold text-white">LENS CLOSET</p>
                 </a>
             </div>
 

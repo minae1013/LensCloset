@@ -87,7 +87,13 @@
                 {{-- 評価 --}}
                 <div class="mb-4">
                     <label class="block text-sm font-medium text-gray-700" for="rating">評価</label>
-                    <input type="text" name="rating" id="rating" value="{{ old('rating', $lens->rating ?? '') }}" class="mt-1 block w-full rounded-md border border-gray-300 shadow-sm focus:ring-blue-500 focus:border-blue-500 p-3">
+                    <select name="rating" id="rating" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-3">
+                        @foreach(App\Enums\RatingEnum::cases() as $rating)
+                            <option value="{{ $rating->value }}" {{ old('rating', $lens->rating ?? '') === $rating->value ? 'selected' : '' }}>
+                                {{ $rating->label() }}
+                            </option>
+                        @endforeach
+                    </select>
                     @error('rating')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
                     @enderror
