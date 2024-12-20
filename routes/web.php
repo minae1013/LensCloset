@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [LensController::class, 'home'])->name('home');
 
+Route::get('/login', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'create'])->name('login');
+Route::post('/login', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'store']);
+Route::get('/register', [\App\Http\Controllers\Auth\RegisteredUserController::class, 'create'])->name('register');
+Route::post('/register', [\App\Http\Controllers\Auth\RegisteredUserController::class, 'store']);
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -26,10 +31,5 @@ Route::middleware('auth')->group(function () {
 
     Route::delete('lens/{id}', [LensController::class, 'destroy'])->name('destroy');
 });
-
-Route::get('/login', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'create'])->name('login');
-Route::post('/login', [\App\Http\Controllers\Auth\AuthenticatedSessionController::class, 'store']);
-Route::get('/register', [\App\Http\Controllers\Auth\RegisteredUserController::class, 'create'])->name('register');
-Route::post('/register', [\App\Http\Controllers\Auth\RegisteredUserController::class, 'store']);
 
 require __DIR__.'/auth.php';
