@@ -3,9 +3,9 @@
         <p class="mt-5">データがありません。</p>
     @else
         @foreach($lenses as $lens)
-            <a href="{{ route('detail', $lens->id) }}" class="postBox bg-gray-100 h-36 rounded-lg shadow-lg border flex overflow-hidden">
+            <a href="{{ route('show', $lens->id) }}" class="postBox bg-gray-100 h-36 rounded-lg shadow-lg border flex overflow-hidden">
                 <div class="postImgItem h-36 w-1/3 pr-2">
-                    <img src="{{ $lens->image_path }}" alt="{{ $lens->brand }}" class="w-full h-full object-cover">
+                    <img src="{{ asset($lens->image_path) }}" alt="{{ $lens->brand }}" class="w-full h-full object-cover">
                 </div>
                 <div class="postTxtItem p-4 flex-grow">
                     <h4 class="text-md font-bold">{{ $lens->brand }}</h4>

@@ -19,15 +19,15 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/lens', [LensController::class, 'mylens'])->name('mylens');
 
+    Route::get('/lens/repeat', [LensController::class, 'repeat'])->name('repeat');
+
     Route::get('lens/create', [LensController::class, 'create'])->name('create');
     Route::post('lens/create', [LensController::class, 'store'])->name('store');
 
-    Route::get('lens/{id}', [LensController::class, 'show'])->name('detail');
+    Route::get('lens/{id}', [LensController::class, 'show'])->name('show');
 
     Route::get('lens/{id}/edit', [LensController::class, 'edit'])->name('edit');
     Route::put('lens/{id}', [LensController::class, 'update'])->name('update');
-
-    Route::get('/lens/repeat', [LensController::class, 'repeat'])->name('lens.repeat');
 
     Route::delete('lens/{id}', [LensController::class, 'destroy'])->name('destroy');
 });
