@@ -38,6 +38,23 @@ class LensController extends Controller
         
     }
 
+    public function repeat()
+    {
+        $userId = Auth::id();
+
+        if(Auth::check()){
+            $lenses = Lens::with('category')
+                ->where('user_id', $userId)
+                ->where('repeat', 1)
+                ->orderBy('updated_at', 'desc')
+                ->paginate(6);
+            return view('lens.repeat', compact('lenses'));
+        } else{
+            return redirect()->route('home');
+        }
+        
+    }
+
     /**
      * Show the form for creating a new resource.
      */
@@ -140,4 +157,5 @@ class LensController extends Controller
         $lens->delete();
         return redirect()->route('mylens')->with('success', '投稿が削除されました!');
     }
+
 }
