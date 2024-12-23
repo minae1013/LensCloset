@@ -10,6 +10,15 @@ use App\Models\Category;
 
 class LensController extends Controller
 {
+    private $lens;
+
+    public function __construct(
+        Lens $lens,
+    )
+    {
+        $this->lens = $lens;
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -22,15 +31,27 @@ class LensController extends Controller
     }
 
     // Myコンタクト一覧の表示
-    public function mylens()
+    public function mylens(Request $request)
     {
         $userId = Auth::id();
+        $search = $request->input('search', '');
 
-        if(Auth::check()){
-            $lenses = Lens::with('category')
-                ->where('user_id', $userId)
-                ->orderBy('updated_at', 'desc')
-                ->paginate(6);
+        if($userId){
+            if($search){
+                $lenses = $this->lens->where('user_id', $userId)
+                                    ->where(function ($query) use ($search) {
+                                        $query->where('brand', 'like', "%{$search}%")
+                                                ->orWhere('color', 'like', "%{$search}%")
+                                                ->orWhere('comment', 'like', "%{$search}%");
+                                    })
+                                    ->paginate(6)
+                                    ->withQueryString();
+            } else{
+                $lenses = Lens::with('category')
+                    ->where('user_id', $userId)
+                    ->orderBy('updated_at', 'desc')
+                    ->paginate(6);
+            }
             return view('mylens', compact('lenses'));
         } else{
             return redirect()->route('home');

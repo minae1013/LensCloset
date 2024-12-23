@@ -4,7 +4,7 @@
         <div class="flex h-16">
             <!-- Logo -->
             <div class="shrink-0 flex items-center">
-                <a href="">
+                <a href="{{ route('mylens') }}">
                     <p class="text-2xl font-bold text-white">LENS CLOSET</p>
                 </a>
             </div>
@@ -59,7 +59,7 @@
                         {{-- プルダウン内のメニュー --}}
                         <x-slot name="content">
                             <x-dropdown-link :href="route('profile.edit')">
-                                {{ __('Profile') }}
+                                {{ __('プロフィール') }}
                             </x-dropdown-link>
 
                             <!-- Authentication -->
@@ -69,7 +69,7 @@
                                 <x-dropdown-link :href="route('logout')"
                                         onclick="event.preventDefault();
                                                     this.closest('form').submit();">
-                                    {{ __('Log Out') }}
+                                    {{ __('ログアウト') }}
                                 </x-dropdown-link>
                             </form>
                         </x-slot>
