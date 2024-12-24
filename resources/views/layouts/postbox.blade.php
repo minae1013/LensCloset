@@ -5,7 +5,7 @@
         @foreach($lenses as $lens)
             <a href="{{ route('show', $lens->id) }}" class="postBox bg-gray-100 h-36 rounded-lg shadow-lg border flex overflow-hidden">
                 <div class="postImgItem h-36 w-1/3 pr-2">
-                    <img src="{{ asset($lens->image_path) }}" alt="{{ $lens->brand }}" class="w-full h-full object-cover">
+                    <img src="{{ $lens->image_url }}" alt="{{ $lens->brand }}" class="w-full h-full object-cover">
                 </div>
                 <div class="postTxtItem p-4 flex-grow">
                     <h4 class="text-md font-bold">{{ $lens->brand }}</h4>
@@ -18,6 +18,6 @@
         @endforeach
     @endif
 </div>
-<div class="text-center px-36 mt-2 pagenation">
-    {{ $lenses->Links() }}
+<div class="text-center px-36 mt-8 pagenation">
+    {{ $lenses->links() }}
 </div>
