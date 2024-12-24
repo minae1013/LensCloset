@@ -19,7 +19,7 @@
                 <label class="text-sm font-medium text-gray-700">画像</label>
                 <div class="mt-1 h-72">
                     @if($lens->image_path)
-                        <img src="{{ asset($lens->image_path) }}" alt="Lens Image" class="w-full h-full rounded-md">
+                        <img src="{{ $lens->image_url }}" alt="{{ $lens->brand }}" class="w-full h-full rounded-md">
                     @else
                         <p class="text-gray-500">画像はありません。</p>
                     @endif

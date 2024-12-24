@@ -24,7 +24,7 @@ return new class extends Migration
             $table->decimal('colored_diameter', 3, 1);
             $table->enum('lifespan', [LifespanEnum::ONE_DAY->value, LifespanEnum::TWO_WEEKS->value, LifespanEnum::ONE_MONTH->value])->default(LifespanEnum::ONE_DAY->value);
             $table->integer('price');
-            $table->string('image_path');
+            $table->string('image_path')->nullable();
             $table->enum('rating', [RatingEnum::VERY_GOOD->value, RatingEnum::GOOD->value, RatingEnum::NEUTRAL->value, RatingEnum::BAD->value, RatingEnum::VERY_BAD->value])->default(RatingEnum::NEUTRAL->value);
             $table->text('comment');
             $table->enum('repeat', [RepeatEnum::YES->value, RepeatEnum::NO->value])->default(RepeatEnum::NO->value);

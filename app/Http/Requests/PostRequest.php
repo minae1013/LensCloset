@@ -29,7 +29,7 @@ class PostRequest extends FormRequest
             'colored_diameter' =>'required|numeric',
             'lifespan' =>'required|numeric',
             'price' =>'required|numeric',
-            'image_path' => 'file|image|mimes:jpg,jpeg,png|max:1024',
+            'image_path' => 'file|image|nullable|mimes:jpg,jpeg,png|max:1024',
             'rating' =>'required|numeric',
             'comment' =>'required|string|max:500',
             'repeat' =>'required|numeric',
