@@ -1,66 +1,117 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
-
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+# Nail Idea Factory
+## 使用技術一覧
+<p style="display: inline">
+　<!-- フロントエンドの言語一覧 -->
+    <img src="https://img.shields.io/badge/-HTML-99d1ce.svg?logo=&style=for-the-badge">
+    <img src="https://img.shields.io/badge/-CSS-1572B6.svg?logo=&style=for-the-badge">
+    <img src="https://img.shields.io/badge/-Javascript-fff5a1.svg?logo=javascript&style=for-the-badge">
+  <!-- フロントエンドのフレームワーク一覧 -->
+<!--   <img src="https://img.shields.io/badge/-Next.js-000000.svg?logo=next.js&style=for-the-badge"> -->
+  <!-- バックエンドの言語一覧 -->
+  <img src="https://img.shields.io/badge/-Php-cccfff.svg?logo=php&style=for-the-badge">
+  <!-- バックエンドのフレームワーク一覧 -->
+  <img src="https://img.shields.io/badge/-Laravel-f3a68c.svg?logo=laravel&style=for-the-badge">
+  <!-- ミドルウェア一覧 -->
+  <img src="https://img.shields.io/badge/-MySQL-4479A1.svg?logo=mysql&style=for-the-badge&logoColor=white">
+  <!-- インフラ一覧 -->
+  <img src="https://img.shields.io/badge/-Docker-1488C6.svg?logo=docker&style=for-the-badge">
 </p>
 
-## About Laravel
+## 概要
+### アプリを作ったきっかけ
+さまざまなネイルのデザインに挑戦したいので、日々、InstagramやXなど各SNSの投稿でデザインの参考になりそうなものを保存したり、画像検索で見つけた参考画像を保管したりしています。ただ、それではデザインを残しておく場所が複数に分かれてしまい、画像を探す手間がかかります。 
+さらに、ネイリストの方に自分が思っているデザインを的確に伝えるためにも、ひとつにどんなデザインかをまとめておきたいと感じていました。
+そこで、それらをひとまとめにして簡単に管理できるメモアプリがあれば便利だと考え、このアプリの開発に至りました。
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### アプリ機能説明
+・デザイン画像・参考URL・使用したいパーツなどを一元管理します。
+ InstagramやX、画像検索で保存したネイルデザインをアプリ内でひとまとめに管理できます。
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+・カテゴリ分け
+カテゴリで、デザインを簡単に分類できます。（例：フレンチネイル、ニュアンスネイル）
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+・他の人が登録したデザインも確認することができます。
 
-## Learning Laravel
+### 今後の実装予定
+・画像などの複数登録調整
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+・デザインの公開範囲の変更
+ネイリストの方への共有などが必要な時は、公開に設定、自分だけが確認したかったら非公開に設定など、用途によって公開範囲を変更できるようにします。
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+・完成したネイルの投稿機能
+ネイルのデザインメモだけではなく、完成したものを共有できるような投稿機能を追加します。
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+・お気に入り機能の追加
 
-## Laravel Sponsors
+・検索機能の追加
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+### アプリ表示側イメージ
+![スクリーンショット 2024-11-18 23 59 47](https://github.com/user-attachments/assets/334bb3fd-886d-4780-aeb2-129706933b95)
+![localhost_dashboard (1)](https://github.com/user-attachments/assets/3562838b-76f3-4fd4-ba28-2100bcfab9ca)
+![localhost_idea (1)](https://github.com/user-attachments/assets/1e9fd47d-bc87-4841-b098-9620d0294035)
 
-### Premium Partners
+### アプリURL
+https://nailideafactory-app.vercel.app/
+#### テストアカウント
+~~~
+    ID:yamadahanako@example.com
+    PASS:Password
+~~~
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+## 開発環境の構築方法
 
-## Contributing
+### 構築環境
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+docker
+laravel 11（sail利用）
 
-## Code of Conduct
+1. git clone
+~~~
+git clone ~~~
+~~~
+2. 環境変数ファイルの作成
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+clone したディレクトリへ移動
+~~~
+cd ~~~
+cp .env.example .env
+~~~
+3. パッケージインストール
+~~~
+docker run --rm \
+    -u "$(id -u):$(id -g)" \
+    -v "$(pwd):/var/www/html" \
+    -w /var/www/html \
+    laravelsail/php81-composer:latest \
+    composer install --ignore-platform-reqs
+~~~
+4. Dockerコンテナ起動
+~~~
+./vendor/bin/sail up -d
+~~~
+5. APP_KEYの生成
+~~~
+./vendor/bin/sail artisan key:generate
+~~~
 
-## Security Vulnerabilities
+6. フロントパッケージインストール
+~~~
+./vendor/bin/sail npm install
+./vendor/bin/sail npm run dev
+~~~
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+7. マイグレーション
+~~~
+./vendor/bin/sail artisan migrate
+~~~
 
-## License
+8.シーダー実行
+~~~
+./vendor/bin/sail　artisan db:seed
+~~~
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+※エイリアスを変更
+sailコマンドがsail~で実行できるようになる 例：sail artisan migrate
+~~~
+alias sail="vendor/bin/sail"
+~~~
