@@ -37,9 +37,9 @@ class LensController extends Controller
         $userId = Auth::id();
         $search = $request->input('search', '');
 
-        if($userId){
+        if ($userId) {
             // 検索ワードがあった場合
-            if($search){
+            if ($search) {
                 $lenses = $this->lens->where('user_id', $userId)
                                     ->where(function ($query) use ($search) {
                                         $query->where('brand', 'like', "%{$search}%")
@@ -48,7 +48,7 @@ class LensController extends Controller
                                     })
                                     ->paginate(6)
                                     ->withQueryString();
-            } else{
+            } else {
                 // 検索ワードがなかった場合
                 $lenses = Lens::with('category')
                     ->where('user_id', $userId)
@@ -64,7 +64,7 @@ class LensController extends Controller
             }
 
             return view('mylens', compact('lenses'));
-        } else{
+        } else {
             return redirect()->route('home');
         }
         
@@ -74,14 +74,21 @@ class LensController extends Controller
     {
         $userId = Auth::id();
 
-        if(Auth::check()){
+        if ($userId) {
             $lenses = Lens::with('category')
                 ->where('user_id', $userId)
                 ->where('repeat', 1)
                 ->orderBy('updated_at', 'desc')
                 ->paginate(6);
+            
+            foreach ($lenses as $lens) {
+                if ($lens->image_path) {
+                    // S3のURLを生成
+                    $lens->image_url = Storage::disk('s3')->url($lens->image_path);
+                }
+            }
             return view('lens.repeat', compact('lenses'));
-        } else{
+        } else {
             return redirect()->route('home');
         }
         
@@ -92,8 +99,7 @@ class LensController extends Controller
      */
     public function create()
     {
-        $categories = Category::orderBy('created_at', 'desc')
-        ->get();
+        $categories = Category::orderBy('created_at', 'desc')->get();
         return view('lens.create', compact('categories'));
     }
 
@@ -102,11 +108,6 @@ class LensController extends Controller
      */
     public function store(PostRequest $request)
     {
-        // $image = $request->file('image_path');
-        // $imageName = time() . '-' . $image->getClientOriginalName();
-        // $image->move(public_path('img'),  $imageName);
-        // $imageUrl = 'img/' . $imageName;
-
         // 画像がアップロードされていた場合
         if ($request->hasFile('image_path')) {
             // S3に保存
@@ -131,7 +132,7 @@ class LensController extends Controller
         $lens->comment = $request->comment;
         $lens->image_path = $path;
         $lens->save();
-        return redirect()->route('mylens');
+        return redirect()->route('mylens')->with('success', '投稿が登録されました!');
     }
 
     /**
@@ -141,7 +142,7 @@ class LensController extends Controller
     {
         $lens = Lens::find($id);
 
-        if(is_null($lens)){
+        if (is_null($lens)) {
             return view('lens.detail', ['error' => 'データがありません']);
         }
 
@@ -160,9 +161,7 @@ class LensController extends Controller
     {
         $lens = Lens::findOrFail($id);
 
-        $categories = Category::orderBy('created_at', 'desc')
-        ->get();
-
+        $categories = Category::orderBy('created_at', 'desc')->get();
         return view('lens.edit', compact('lens', 'categories'));
     }
 
@@ -173,12 +172,18 @@ class LensController extends Controller
     {
         $lens = Lens::findOrFail($id);
 
+        // 画像がアップロードされていた場合
         if ($request->hasFile('image_path')) {
-            $image = $request->file('image_path');
-            $imageName = time() . '-' . $image->getClientOriginalName();
-            $image->move(public_path('img'),  $imageName);
-            $imageUrl = 'img/' . $imageName;
-            $lens->image_path = $imageUrl;
+            // 古い画像をS3から削除
+            if ($lens->image_path) {
+                Storage::disk('s3')->delete($lens->image_path);
+            }
+            // 新しい画像をS3に保存
+            $path = $request->file('image_path')->store('images', 's3');
+            $lens->image_path = $path;
+        } else {
+            // 画像がアップロードされていない場合、既存画像をそのまま使用
+            $path = $lens->image_path;    
         }
 
         $lens->brand = $request->brand;
@@ -191,6 +196,7 @@ class LensController extends Controller
         $lens->repeat = $request->repeat;
         $lens->category_id = $request->category_id;
         $lens->comment = $request->comment;
+        $lens->image_path = $path;
         $lens->save();
         return redirect()->route('mylens')->with('success', '投稿が更新されました!');
     }
