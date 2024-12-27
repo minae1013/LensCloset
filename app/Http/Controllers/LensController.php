@@ -131,7 +131,7 @@ class LensController extends Controller
         $lens->comment = $request->comment;
         $lens->image_path = $path;
         $lens->save();
-        return redirect()->route('mylens');
+        return redirect()->route('mylens')->with('success', '投稿が登録されました!');
     }
 
     /**
