@@ -1,5 +1,5 @@
 # Nail Idea Factory
-## 使用技術一覧 
+## 使用技術一覧  
 <p style="display: inline">
 　<!-- フロントエンドの言語一覧 -->
     <img src="https://img.shields.io/badge/-HTML-99d1ce.svg?logo=&style=for-the-badge">
