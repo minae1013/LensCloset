@@ -14,11 +14,12 @@ class CategorySeeder extends Seeder
      */
     public function run()
     {
-        // 例として3つのカテゴリを挿入
         DB::table('categories')->insert([
-            ['name' => 'Technology', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Health', 'created_at' => now(), 'updated_at' => now()],
-            ['name' => 'Lifestyle', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => '色素薄い系', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'ナチュラル', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'ハーフ系', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => '水光レンズ', 'created_at' => now(), 'updated_at' => now()],
+            ['name' => 'ギャル系', 'created_at' => now(), 'updated_at' => now()],
         ]);
     }
 }
