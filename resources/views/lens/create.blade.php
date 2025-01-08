@@ -61,11 +61,9 @@
                 <div class="mb-4">
                     <label class="block text-sm font-medium text-gray-700" for="lifespan">使用期間</label>
                     <select name="lifespan" id="lifespan" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-3">
-                        @foreach(App\Enums\LifespanEnum::cases() as $lifespan)
-                            <option value="{{ $lifespan->value }}" {{ old('lifespan', $lens->lifespan ?? '') === $lifespan->value ? 'selected' : '' }}>
-                                {{ $lifespan->label() }}
-                            </option>
-                        @endforeach
+                        <option value="1" {{ old('lifespan') == '1' ? 'selected' : '' }}>1day</option>
+                        <option value="2" {{ old('lifespan') == '2' ? 'selected' : '' }}>2week</option>
+                        <option value="3" {{ old('lifespan') == '3' ? 'selected' : '' }}>1month</option>
                     </select>
                     @error('lifespan')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
@@ -88,11 +86,11 @@
                 <div class="mb-4">
                     <label class="block text-sm font-medium text-gray-700" for="rating">評価</label>
                     <select name="rating" id="rating" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-3">
-                        @foreach(App\Enums\RatingEnum::cases() as $rating)
-                            <option value="{{ $rating->value }}" {{ old('rating', $lens->rating ?? '') === $rating->value ? 'selected' : '' }}>
-                                {{ $rating->label() }}
-                            </option>
-                        @endforeach
+                        <option value="1" {{ old('rating') == '1' ? 'selected' : '' }}>非常に良い</option>
+                        <option value="2" {{ old('rating') == '2' ? 'selected' : '' }}>良い</option>
+                        <option value="3" {{ old('rating') == '3' ? 'selected' : '' }}>どちらでもない</option>
+                        <option value="4" {{ old('rating') == '4' ? 'selected' : '' }}>悪い</option>
+                        <option value="5" {{ old('rating') == '5' ? 'selected' : '' }}>非常に悪い</option>
                     </select>
                     @error('rating')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
@@ -103,11 +101,8 @@
                 <div class="mb-4">
                     <label class="block text-sm font-medium text-gray-700" for="repeat">リピート</label>
                     <select name="repeat" id="repeat" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-3">
-                        @foreach(App\Enums\RepeatEnum::cases() as $repeat)
-                            <option value="{{ $repeat->value }}" {{ old('repeat', $lens->repeat ?? '') === $repeat->value ? 'selected' : '' }}>
-                                {{ $repeat->label() }}
-                            </option>
-                        @endforeach
+                        <option value="1" {{ old('repeat') == '1' ? 'selected' : '' }}>あり</option>
+                        <option value="2" {{ old('repeat') == '2' ? 'selected' : '' }}>なし</option>
                     </select>
                     @error('repeat')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
