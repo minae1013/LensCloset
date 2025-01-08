@@ -10,7 +10,7 @@
                 <div class="postTxtItem p-4 flex-grow">
                     <h4 class="text-md font-bold">{{ $lens->brand }}</h4>
                     <p class="text-md font-bold">{{ $lens->color }}</p>
-                    <p class="text-sm text-gray-500 mt-1">{{ $lens->lifespan->label() }}</p>
+                    <p class="text-sm text-gray-500 mt-1">{{ $lens->lifespan }}</p>
                     <p class="text-sm text-gray-500 mt-1">DIA  {{ $lens->lens_diameter }}cm</p>
                     <p class="text-sm text-gray-500">(着色  {{ $lens->colored_diameter }}cm)</p>
                 </div>
