@@ -4,8 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use App\Enums\RepeatEnum;
-use App\Enums\LifespanEnum;
 
 class Lens extends Model
 {
@@ -34,10 +32,5 @@ class Lens extends Model
         'rating',
         'comment',
         'repeat',
-    ];
-
-    protected $casts = [
-        'lifespan' => LifespanEnum::class,
-        'repeat' => RepeatEnum::class,
     ];
 }
