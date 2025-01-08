@@ -41,7 +41,7 @@
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700">使用期間</label>
                 <p class="mt-1 text-lg text-gray-800 border-b">
-                    {{ $lens->lifespan->label() ?? '登録なし' }}
+                    {{ $lens->lifespan ?? '登録なし' }}
                 </p>
             </div>
 
@@ -61,7 +61,7 @@
             <div class="mb-4">
                 <label class="block text-sm font-medium text-gray-700">リピート</label>
                 <p class="mt-1 text-lg text-gray-800 border-b">
-                    {{ $lens->repeat->label() ?? '登録なし' }}
+                    {{ $lens->repeat ?? '登録なし' }}
                 </p>
             </div>
         </div>
