@@ -62,9 +62,9 @@
                 <div class="mb-4">
                     <label class="block text-sm font-medium text-gray-700" for="lifespan">使用期間</label>
                     <select name="lifespan" id="lifespan" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-3">
-                        <option value="1day" {{ old('lifespan') == '1day' ? 'selected' : '' }}>1day</option>
-                        <option value="2week" {{ old('lifespan') == '2week' ? 'selected' : '' }}>2week</option>
-                        <option value="1month" {{ old('lifespan') == '1month' ? 'selected' : '' }}>1month</option>
+                        <option value="1day" {{ old('lifespan', $lens->lifespan ?? '') == '1day' ? 'selected' : '' }}>1day</option>
+                        <option value="2week" {{ old('lifespan', $lens->lifespan ?? '') == '2week' ? 'selected' : '' }}>2week</option>
+                        <option value="1month" {{ old('lifespan', $lens->lifespan ?? '') == '1month' ? 'selected' : '' }}>1month</option>
                     </select>
                     @error('lifespan')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
@@ -87,11 +87,11 @@
                 <div class="mb-4">
                     <label class="block text-sm font-medium text-gray-700" for="rating">評価</label>
                     <select name="rating" id="rating" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-3">
-                        <option value="非常に良い" {{ old('rating') == '非常に良い' ? 'selected' : '' }}>非常に良い</option>
-                        <option value="良い" {{ old('rating') == '良い' ? 'selected' : '' }}>良い</option>
-                        <option value="どちらでもない" {{ old('rating') == 'どちらでもない' ? 'selected' : '' }}>どちらでもない</option>
-                        <option value="悪い" {{ old('rating') == '悪い' ? 'selected' : '' }}>悪い</option>
-                        <option value="非常に悪い" {{ old('rating') == '非常に悪い' ? 'selected' : '' }}>非常に悪い</option>
+                        <option value="非常に良い" {{ old('rating', $lens->rating ?? '') == '非常に良い' ? 'selected' : '' }}>非常に良い</option>
+                        <option value="良い" {{ old('rating', $lens->rating ?? '') == '良い' ? 'selected' : '' }}>良い</option>
+                        <option value="どちらでもない" {{ old('rating', $lens->rating ?? '') == 'どちらでもない' ? 'selected' : '' }}>どちらでもない</option>
+                        <option value="悪い" {{ old('rating', $lens->rating ?? '') == '悪い' ? 'selected' : '' }}>悪い</option>
+                        <option value="非常に悪い" {{ old('rating', $lens->rating ?? '') == '非常に悪い' ? 'selected' : '' }}>非常に悪い</option>
                     </select>
                     @error('rating')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
@@ -102,8 +102,8 @@
                 <div class="mb-4">
                     <label class="block text-sm font-medium text-gray-700" for="repeat">リピート</label>
                     <select name="repeat" id="repeat" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 p-3">
-                        <option value="あり" {{ old('repeat') == 'あり' ? 'selected' : '' }}>あり</option>
-                        <option value="なし" {{ old('repeat') == 'なし' ? 'selected' : '' }}>なし</option>
+                        <option value="あり" {{ old('repeat', $lens->repeat ?? '') == 'あり' ? 'selected' : '' }}>あり</option>
+                        <option value="なし" {{ old('repeat', $lens->repeat ?? '') == 'なし' ? 'selected' : '' }}>なし</option>
                     </select>
                     @error('repeat')
                         <div class="text-red-600 text-sm mt-1">{{ $message }}</div>
