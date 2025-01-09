@@ -77,7 +77,7 @@ class LensController extends Controller
         if ($userId) {
             $lenses = Lens::with('category')
                 ->where('user_id', $userId)
-                ->where('repeat', 1)
+                ->where('repeat', 'あり')
                 ->orderBy('updated_at', 'desc')
                 ->paginate(6);
 
